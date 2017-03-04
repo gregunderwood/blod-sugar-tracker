@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :blood_sugar_levels do
+    post 'upload', on: :collection
+  end
+
+  root to: "blood_sugar_levels#index"
 end

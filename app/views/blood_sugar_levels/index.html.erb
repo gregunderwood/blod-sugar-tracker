@@ -1,0 +1,56 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'Upload Blood Sugar Level CSV', new_blood_sugar_level_path %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Blood Sugar (mmol/L)</th>
+        <th>Reference Method</th>
+        <th>Fasting</th>
+        <th>Before Meal</th>
+        <th>After Meal</th>
+        <th>Logbook</th>
+        <th>Deleted</th>
+        <th>Control</th>
+        <th>Manual</th>
+        <th>A1c %</th>
+        <th>A1c mmol/mol</th>
+        <th>Insulin</th>
+        <th>Insulin Type</th>
+        <th>Carb Grams</th>
+        <th>Carb Points</th>
+        <th>Carb Choices</th>
+        <th>Comment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @blood_sugar_levels.each do |blood_sugar_level| %>
+        <tr>
+          <td><%= blood_sugar_level.checked_at %></td>
+          <td><%= blood_sugar_level.blood_sugar %></td>
+          <td><%= blood_sugar_level.reference_method %></td>
+          <td><%= blood_sugar_level.fasting %></td>
+          <td><%= blood_sugar_level.before_meal %></td>
+          <td><%= blood_sugar_level.after_meal %></td>
+          <td><%= blood_sugar_level.logbook %></td>
+          <td><%= blood_sugar_level.deleted %></td>
+          <td><%= blood_sugar_level.control %></td>
+          <td><%= blood_sugar_level.manual %></td>
+          <td><%= blood_sugar_level.a1c_percentage %></td>
+          <td><%= blood_sugar_level.a1c_measurement %></td>
+          <td><%= blood_sugar_level.insulin %></td>
+          <td><%= blood_sugar_level.insulin_type %></td>
+          <td><%= blood_sugar_level.carb_grams %></td>
+          <td><%= blood_sugar_level.carb_points %></td>
+          <td><%= blood_sugar_level.carb_choices %></td>
+          <td><%= blood_sugar_level.comment %></td>
+          <td><%= link_to 'Destroy', blood_sugar_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
