@@ -4,7 +4,7 @@ class BloodSugarLevel < ApplicationRecord
 
   def self.import_from_csv(file_path)
     CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
-      checked_at = DateTime.strptime("#{row[:date]} #{row[:time]}", "%m/%d/%Y %H:%M:%S")
+      checked_at = DateTime.strptime("#{row[:date]} #{row[:time]}", "%m/%d/%y %H:%M:%S")
       bsl = BloodSugarLevel.create checked_at: checked_at,
                              blood_sugar: row[:blood_sugar],
                              reference_method: row[:reference_method],

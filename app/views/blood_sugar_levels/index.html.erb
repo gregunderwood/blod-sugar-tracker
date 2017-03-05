@@ -1,8 +1,11 @@
 <div class="container">
-  <p id="notice"><%= notice %></p>
-  <%= link_to 'Upload Blood Sugar Level CSV', new_blood_sugar_level_path %>
-
-  <table>
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
+  <div class="row bsl-actions">
+    <%= link_to 'Upload Blood Sugar Level CSV', new_blood_sugar_level_path, class: "btn btn-primary" %>
+  </div>
+  <table class="table table-striped table-condensed table-bordered">
     <thead>
       <tr>
         <th>Date</th>
@@ -30,16 +33,16 @@
     <tbody>
       <% @blood_sugar_levels.each do |blood_sugar_level| %>
         <tr>
-          <td><%= blood_sugar_level.checked_at %></td>
+          <td><%= blood_sugar_level.checked_at.strftime("%m/%d/%y %H:%M:%S") %></td>
           <td><%= blood_sugar_level.blood_sugar %></td>
           <td><%= blood_sugar_level.reference_method %></td>
-          <td><%= blood_sugar_level.fasting %></td>
-          <td><%= blood_sugar_level.before_meal %></td>
-          <td><%= blood_sugar_level.after_meal %></td>
-          <td><%= blood_sugar_level.logbook %></td>
-          <td><%= blood_sugar_level.deleted %></td>
-          <td><%= blood_sugar_level.control %></td>
-          <td><%= blood_sugar_level.manual %></td>
+          <td><%= blood_sugar_level.fasting ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.before_meal ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.after_meal ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.logbook ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.deleted ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.control ? 1 : 0 %></td>
+          <td><%= blood_sugar_level.manual ? 1 : 0 %></td>
           <td><%= blood_sugar_level.a1c_percentage %></td>
           <td><%= blood_sugar_level.a1c_measurement %></td>
           <td><%= blood_sugar_level.insulin %></td>
